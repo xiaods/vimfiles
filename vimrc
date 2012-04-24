@@ -43,12 +43,17 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
 
+Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'mrxd/bufkill.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'codegram/vim-haml2slim'
+
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
 
 " Default color theme
 Bundle 'sjl/badwolf'
@@ -122,7 +127,7 @@ if has("gui_running")
     set guioptions=aiA
     set mouse=v
 endif
-set guifont=Monaco:h12
+set guifont=Bitstream\ Vera\ Sans\ Mono\ 12
 
 " Autocommands depending on file type
 autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
@@ -292,8 +297,6 @@ map <F9> :tprev<CR>
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_custom_ignore = '\v[\/](doc|tmp|log|coverage)$'
 
-" NERDtree
-nmap <silent> <leader>p :NERDTreeToggle<cr>%
 " Surround
 " ,' switches ' and "
 nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
@@ -306,6 +309,8 @@ let g:syntastic_auto_loc_list=0
 
 " Haml2Slim
 nnoremap <leader>h2s :call Haml2Slim(bufname("%"))<CR>
+" NERDtree
+nmap <silent> <leader>p :NERDTreeToggle<cr>%
 
 " --------------------
 " CUSTOM CONFIGURATION
