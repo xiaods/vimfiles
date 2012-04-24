@@ -54,6 +54,10 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'kchmck/vim-coffee-script'
+
 " Default color theme
 Bundle 'sjl/badwolf'
 colorscheme badwolf
