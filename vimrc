@@ -43,7 +43,6 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
 
-Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'mrxd/bufkill.vim'
 Bundle 'vim-ruby/vim-ruby'
