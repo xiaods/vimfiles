@@ -29,4 +29,5 @@ TA-DA! Everything's done!
 
 ### Notice
 
-You must install Inconsolata to have powerline theme work correctly out of the box.
+*You must install [Inconsolata](https://github.com/skwp/dotfiles/tree/master/fonts) to have powerline theme work correctly out of the box.
+*You must install tmux before, (vimux,vroom) vim-plugins need it.
