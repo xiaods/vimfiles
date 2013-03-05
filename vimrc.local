@@ -5,6 +5,7 @@ let &titleold=getcwd()
 Bundle 'benmills/vimux'
 Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'skalnik/vim-vroom'
+Bundle 'Yggdroot/indentLine'
 
 " vroom support vimux
 let g:vroom_use_vimux = 1
@@ -21,3 +22,5 @@ map ri :InspectVimTmuxRunner
 map rx :CloseVimTmuxPanes
 " Interrupt any command running in the runner pane
 map rs :InterruptVimTmuxRunner
+
+let g:indentLine_color_term = 239
