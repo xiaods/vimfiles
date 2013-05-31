@@ -170,7 +170,7 @@ noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
 nmap <leader>d :bd<CR>
 nmap <leader>D :bufdo bd<CR>
-nmap <silent> <leader>b :FufBuffer<CR>
+nmap <silent> <leader>b :CtrlPBuffer<CR>
 
 " Splits
 nnoremap <leader>v :vs<CR> <C-w>l
@@ -316,6 +316,7 @@ map <F7> :tnext<CR>
 map <F9> :tprev<CR>
 
 " Ctrl-p
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_custom_ignore = '\v[\/](doc|tmp|log|coverage)$'
 
