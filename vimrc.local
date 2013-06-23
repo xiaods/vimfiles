@@ -1,6 +1,7 @@
 " remove leave msg on title
 let &titleold=getcwd()
 
+Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tpope/vim-dispatch'
 "Vimux
 Bundle 'benmills/vimux'
