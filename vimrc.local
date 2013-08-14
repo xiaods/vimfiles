@@ -25,4 +25,7 @@ map rx :CloseVimTmuxPanes
 " Interrupt any command running in the runner pane
 map rs :InterruptVimTmuxRunner
 
-let g:indentLine_color_term = 239
+let g:indentLine_char = '¦'
+
+" easy paste in console
+map <leader>y "*p
