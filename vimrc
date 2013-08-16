@@ -24,7 +24,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-endwise'
 Bundle 'Townk/vim-autoclose'
 Bundle 'jmartindf/vim-tcomment'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 
 Bundle 'mattn/webapi-vim'
@@ -285,9 +285,8 @@ map <leader>T :call RunNearestTest()<CR>
 " PLUG-IN SETTINGS
 " ----------------
 
-" Powerline (fancy status bar)
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 1
+" vim-airline
+let g:airline_powerline_fonts = 1
 
 " Ag (Regex-based search)
 nmap <leader>a :Ag
@@ -352,7 +351,8 @@ if &term =~ '256color'
 endif
 let g:clojure_align_multiline_strings = 1
 
-colorscheme badwolf
+nmap gh <Plug>GitGutterNextHunk
+nmap gH <Plug>GitGutterPrevHunk
 
 syntax on
 filetype indent plugin on
