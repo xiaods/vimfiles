@@ -115,7 +115,10 @@ set colorcolumn=79
 set tw=79
 set t_Co=256
 set iskeyword-=_
-"set clipboard=unnamed
+
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
 
 if has("gui_running")
     set guioptions-=T " no toolbar set guioptions-=m " no menus
