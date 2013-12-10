@@ -9,6 +9,8 @@ Bundle 'benmills/vimux'
 Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'skalnik/vim-vroom'
 
+Bundle 'puppetlabs/puppet-syntax-vim'
+
 " vroom support vimux
 let g:vroom_use_vimux = 1
 " Vimux Customized
