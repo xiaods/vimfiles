@@ -4,12 +4,11 @@ let &titleold=getcwd()
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'tpope/vim-dispatch'
 Bundle 'Yggdroot/indentLine'
+
 "Vimux
 Bundle 'benmills/vimux'
 Bundle 'pgr0ss/vimux-ruby-test'
 Bundle 'skalnik/vim-vroom'
-
-Bundle 'puppetlabs/puppet-syntax-vim'
 
 " vroom support vimux
 let g:vroom_use_vimux = 1

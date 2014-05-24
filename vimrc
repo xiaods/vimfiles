@@ -1,6 +1,6 @@
 " vimrc
-" Author: Codegram
-" Source: https://github.com/codegram/vimfiles
+" Author: Tommy Xiao
+" Source: https://github.com/xiaods/vimfiles
 
 set nocompatible
 
@@ -17,11 +17,10 @@ let maplocalleader = "."
 " -------
 " BUNDLES
 " -------
-
+"
 Bundle 'rking/ag.vim'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
 Bundle 'Townk/vim-autoclose'
 Bundle 'jmartindf/vim-tcomment'
 Bundle 'bling/vim-airline'
@@ -30,25 +29,38 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-fireplace'
+
+Bundle 'ervandew/supertab'
+
+Bundle 'junkblocker/patchreview-vim'
+Bundle 'codegram/vim-codereview'
+
 Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-cucumber'
 Bundle 'rking/vim-ruby-refactoring'
 Bundle 'tpope/vim-dispatch'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'slim-template/vim-slim'
 
 Bundle 'nono/vim-handlebars'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdtree'
 
+Bundle 'slim-template/vim-slim'
 Bundle 'vim-scripts/ctags.vim'
 Bundle 'mrxd/bufkill.vim'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'codegram/vim-haml2slim'
+Bundle 'majutsushi/tagbar'
+
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
@@ -57,6 +69,8 @@ Bundle 'kchmck/vim-coffee-script'
 " Default color theme
 Bundle 'sjl/badwolf'
 colorscheme badwolf
+
+Bundle 'wting/rust.vim'
 
 " ------------
 " VIM SETTINGS
@@ -80,7 +94,7 @@ set incsearch
 set gdefault
 set laststatus=2
 set list
-set listchars=trail:.
+set listchars=trail:·
 set modelines=5
 set nobackup
 set noeol
@@ -121,7 +135,8 @@ if $TMUX == ''
 endif
 
 if has("gui_running")
-    set guioptions-=T " no toolbar set guioptions-=m " no menus
+    set guioptions-=T " no toolbar
+    set guioptions-=m " no menus
     set guioptions-=r " no scrollbar on the right
     set guioptions-=R " no scrollbar on the right
     set guioptions-=l " no scrollbar on the left
@@ -137,6 +152,7 @@ autocmd FileType python set sw=4 sts=4 et
 autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:&gt;
 autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 autocmd BufWritePre * :%s/\s\+$//e " strip trailing whitespace
+
 " --------
 " MAPPINGS
 " --------
@@ -174,7 +190,6 @@ noremap <tab> :bn<CR>
 noremap <S-tab> :bp<CR>
 nmap <leader>d :bd<CR>
 nmap <leader>D :bufdo bd<CR>
-nmap <silent> <leader>b :CtrlPBuffer<CR>
 
 " Splits
 nnoremap <leader>v :vs<CR> <C-w>l
@@ -188,33 +203,6 @@ set pastetoggle=<F2>
 
 " Git blame
 vmap <leader>gb :Gblame<CR>
-
-" Execute current buffer as ruby
-" map <leader>r :!ruby -I"lib:test" %<cr>
-
-" Tab autocompletes / indents depending on the context
-function! Smart_TabComplete()
-  let line = getline('.')                         " current line
-
-  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
-                                                  " line to one character right
-                                                  " of the cursor
-  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
-  if (strlen(substr)==0)                          " nothing to match on empty string
-    return "\<tab>"
-  endif
-  let has_period = match(substr, '\.') != -1      " position of period, if any
-  let has_slash = match(substr, '\/') != -1       " position of slash, if any
-  if (!has_period && !has_slash)
-    return "\<C-X>\<C-P>"                         " existing text matching
-  elseif ( has_slash )
-    return "\<C-X>\<C-F>"                         " file matching
-  else
-    return "\<C-X>\<C-O>"                         " plugin matching
-  endif
-endfunction
-inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-inoremap <s-tab> <c-n>
 
 " Rename current file
 function! RenameFile()
@@ -323,6 +311,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_custom_ignore = '\v[\/](doc|tmp|log|coverage)$'
 
+"  NERDtree
+nmap <silent> <leader>p :NERDTreeToggle<cr>%
 " Surround
 " ,' switches ' and "
 nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
@@ -335,8 +325,6 @@ let g:syntastic_auto_loc_list=0
 
 " Haml2Slim
 nnoremap <leader>h2s :call Haml2Slim(bufname("%"))<CR>
-" NERDtree
-nmap <silent> <leader>p :NERDTreeToggle<cr>%
 
 " --------------------
 " CUSTOM CONFIGURATION
@@ -353,6 +341,9 @@ if &term =~ '256color'
   set t_ut=
 endif
 let g:clojure_align_multiline_strings = 1
+
+nmap gh <Plug>GitGutterNextHunk
+nmap gH <Plug>GitGutterPrevHunk
 
 nmap gh <Plug>GitGutterNextHunk
 nmap gH <Plug>GitGutterPrevHunk
@@ -388,7 +379,13 @@ if executable("spring")
 endif
 
 if executable("zeus")
-  let g:rspec_command = "!bundle exec zeus rspec {spec}"
+  let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
 endif
 
-imap jk <Esc>
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
+" Ctrlp.vim
+let g:ctrlp_map = '<leader>o'
+let g:ctrlp_working_path_mode = 'ra'
+map <leader>c :CtrlPTag<cr>
+
