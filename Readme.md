@@ -1,6 +1,7 @@
 # vimfiles
 
-These are optimized Fedora edition,derive from new Codegram vimfiles!
+These are optimized personal edition,derive from new Codegram vimfiles!
+Testing ok in MacOS 10.9
 
 ## Installing
 

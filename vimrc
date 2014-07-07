@@ -24,7 +24,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'Townk/vim-autoclose'
 Bundle 'jmartindf/vim-tcomment'
 Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
+" Bundle 'kien/ctrlp.vim'
+Bundle 'szw/vim-ctrlspace'
 
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
@@ -278,6 +279,7 @@ map <leader>T :call RunNearestTest()<CR>
 
 " vim-airline
 let g:airline_powerline_fonts = 1
+let g:airline_exclude_preview = 1
 
 " Ag (Regex-based search)
 nmap <leader>a :Ag
@@ -306,10 +308,14 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <F7> :tnext<CR>
 map <F9> :tprev<CR>
 
+" CtrlSpace
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.min.js,*.min.css
+let g:ctrlspace_default_mapping_key = '<leader>o'
+
 " Ctrl-p
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_map = '<leader>o'
-let g:ctrlp_custom_ignore = '\v[\/](doc|tmp|log|coverage)$'
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" let g:ctrlp_map = '<leader>o'
+" let g:ctrlp_custom_ignore = '\\v[\\/](doc|tmp|log|coverage)$'
 
 "  NERDtree
 nmap <silent> <leader>p :NERDTreeToggle<cr>%
