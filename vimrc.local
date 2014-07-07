@@ -31,3 +31,8 @@ let g:indentLine_color_term = 239
 
 " easy paste in console
 map <leader>y "*p
+
+" my color
+Bundle 'junegunn/seoul256.vim'
+let g:seoul256_background = 236
+colo seoul256
