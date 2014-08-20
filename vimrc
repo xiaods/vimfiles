@@ -6,7 +6,7 @@ set nocompatible
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " ----------
 " Leader key
@@ -18,60 +18,59 @@ let maplocalleader = "."
 " BUNDLES
 " -------
 "
-Bundle 'rking/ag.vim'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-surround'
-Bundle 'Townk/vim-autoclose'
-Bundle 'jmartindf/vim-tcomment'
-Bundle 'bling/vim-airline'
-" Bundle 'kien/ctrlp.vim'
-Bundle 'szw/vim-ctrlspace'
+Plugin 'rking/ag.vim'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-surround'
+Plugin 'Townk/vim-autoclose'
+Plugin 'jmartindf/vim-tcomment'
+Plugin 'bling/vim-airline'
+" Plugin 'kien/ctrlp.vim'
+Plugin 'szw/vim-ctrlspace'
 
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-fireplace'
+Plugin 'guns/vim-clojure-static'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-fireplace'
 
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
-Bundle 'junkblocker/patchreview-vim'
-Bundle 'codegram/vim-codereview'
+Plugin 'junkblocker/patchreview-vim'
+Plugin 'codegram/vim-codereview'
 
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-fugitive'
-Bundle 'rking/vim-ruby-refactoring'
-Bundle 'tpope/vim-dispatch'
-Bundle 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-fugitive'
+Plugin 'rking/vim-ruby-refactoring'
+Plugin 'tpope/vim-dispatch'
+Plugin 'airblade/vim-gitgutter'
 
-Bundle 'nono/vim-handlebars'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/nerdtree'
+Plugin 'nono/vim-handlebars'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/nerdtree'
 
-Bundle 'slim-template/vim-slim'
-Bundle 'vim-scripts/ctags.vim'
-Bundle 'mrxd/bufkill.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'scrooloose/syntastic'
+Plugin 'slim-template/vim-slim'
+Plugin 'vim-scripts/ctags.vim'
+Plugin 'mrxd/bufkill.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'scrooloose/syntastic'
 
-Bundle 'codegram/vim-haml2slim'
-Bundle 'majutsushi/tagbar'
+Plugin 'codegram/vim-haml2slim'
+Plugin 'majutsushi/tagbar'
 
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
 
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
 
 " Default color theme
-Bundle 'sjl/badwolf'
+Plugin 'sjl/badwolf'
 colorscheme badwolf
 
-Bundle 'wting/rust.vim'
+Plugin 'wting/rust.vim'
 
 " ------------
 " VIM SETTINGS

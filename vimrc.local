@@ -1,14 +1,13 @@
 " remove leave msg on title
 let &titleold=getcwd()
 
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'tpope/vim-dispatch'
-Bundle 'Yggdroot/indentLine'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'Yggdroot/indentLine'
 
 "Vimux
-Bundle 'benmills/vimux'
-Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'skalnik/vim-vroom'
+Plugin 'benmills/vimux'
+Plugin 'pgr0ss/vimux-ruby-test'
+Plugin 'skalnik/vim-vroom'
 
 " vroom support vimux
 let g:vroom_use_vimux = 1
@@ -33,6 +32,10 @@ let g:indentLine_color_term = 239
 map <leader>y "*p
 
 " my color
-Bundle 'junegunn/seoul256.vim'
+Plugin 'junegunn/seoul256.vim'
 let g:seoul256_background = 236
 colo seoul256
+
+
+" go devel
+Plugin 'fatih/vim-go'
