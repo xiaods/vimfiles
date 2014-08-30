@@ -39,3 +39,7 @@ colo seoul256
 
 " go devel
 Plugin 'fatih/vim-go'
+syntax enable
+filetype plugin on
+set number
+let g:go_disable_autoinstall = 0
