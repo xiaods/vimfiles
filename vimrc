@@ -24,13 +24,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'Townk/vim-autoclose'
 Plugin 'jmartindf/vim-tcomment'
 Plugin 'bling/vim-airline'
-" Plugin 'kien/ctrlp.vim'
 Plugin 'szw/vim-ctrlspace'
 
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 
-Plugin 'guns/vim-clojure-static'
 Plugin 'tpope/vim-classpath'
 Plugin 'tpope/vim-fireplace'
 
