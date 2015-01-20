@@ -65,7 +65,6 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 
 " Default color theme
-Plugin 'm42i/Smyck-Color-Scheme'
 colorscheme smyck
 
 Plugin 'wting/rust.vim'
