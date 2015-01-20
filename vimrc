@@ -22,7 +22,7 @@ Plugin 'rking/ag.vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
 Plugin 'Townk/vim-autoclose'
-Plugin 'jmartindf/vim-tcomment'
+Plugin 'tomtom/tcomment_vim'
 Plugin 'bling/vim-airline'
 Plugin 'szw/vim-ctrlspace'
 
@@ -65,8 +65,8 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 
 " Default color theme
-Plugin 'sjl/badwolf'
-colorscheme badwolf
+Plugin 'm42i/Smyck-Color-Scheme'
+colorscheme smyck
 
 Plugin 'wting/rust.vim'
 
