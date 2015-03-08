@@ -34,9 +34,6 @@ Plugin 'tpope/vim-fireplace'
 
 Plugin 'ervandew/supertab'
 
-Plugin 'junkblocker/patchreview-vim'
-Plugin 'codegram/vim-codereview'
-
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-fugitive'
