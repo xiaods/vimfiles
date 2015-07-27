@@ -4,27 +4,6 @@ let &titleold=getcwd()
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Yggdroot/indentLine'
 
-"Vimux
-Plugin 'benmills/vimux'
-Plugin 'pgr0ss/vimux-ruby-test'
-Plugin 'skalnik/vim-vroom'
-
-" vroom support vimux
-let g:vroom_use_vimux = 1
-" Vimux Customized
-" let g:VimuxOrientation = 'h'
-" let g:VimuxHeight = '40'
-" Prompt for a command to run
-map rp :PromptVimTmuxCommand
-" Run last command executed by RunVimTmuxCommand
-map rl :RunLastVimTmuxCommand
-" Inspect runner pane
-map ri :InspectVimTmuxRunner
-" Close all other tmux panes in current window
-map rx :CloseVimTmuxPanes
-" Interrupt any command running in the runner pane
-map rs :InterruptVimTmuxRunner
-
 let g:indentLine_char = '¦'
 let g:indentLine_color_term = 239
 
