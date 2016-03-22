@@ -1,7 +1,9 @@
 # vimfiles
 
 These are optimized personal edition,derive from new Codegram vimfiles!
-Testing ok in MacOS 10.9
+OS X El Capitan Tested.
+
+Update: 2016-3-23
 
 ## Installing
 
@@ -10,7 +12,7 @@ Testing ok in MacOS 10.9
 If you trust me, do this:
 
     $ brew install ctags
-    $ rm -fR ~/.vim && git clone https://github.com/xiaods/vimfiles.git ~/.vim && rm ~/.vimrc && ln -s ~/.vim/vimrc ~/.vimrc && git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && vim +BundleInstall +qa! && echo "Done! :)"
+    $ rm -fR ~/.vim && git clone https://github.com/xiaods/vimfiles.git ~/.vim && rm ~/.vimrc && ln -s ~/.vim/vimrc ~/.vimrc && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && vim +BundleInstall +qa! && echo "Done! :)"
 
 ### Manual way
 
@@ -19,7 +21,7 @@ Clone this repo:
     $ git clone https://github.com/dxiao/vimfiles.git ~/.vim
     $ rm ~/.vimrc && ln -s ~/.vim/vimrc ~/.vimrc
 
-Install [Vundle](https://github.com/gmarik/vundle):
+Install [Vundle](https://github.com/VundleVim/Vundle.vim.git):
 
     $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 
