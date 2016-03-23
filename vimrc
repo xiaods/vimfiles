@@ -64,6 +64,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 
 Plugin 'wting/rust.vim'
+Plugin 'lyuts/vim-rtags'
 
 call vundle#end()  " required
 filetype plugin indent on    " required
@@ -393,4 +394,3 @@ nnoremap <silent> <Leader>b :TagbarToggle<CR>
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_working_path_mode = 'ra'
 map <leader>c :CtrlPTag<cr>
-
