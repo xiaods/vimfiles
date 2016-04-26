@@ -43,3 +43,6 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
+
+" go lint
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
