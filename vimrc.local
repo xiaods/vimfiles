@@ -13,9 +13,22 @@ map <leader>y "*p
 " go devel
 Plugin 'fatih/vim-go'
 syntax enable
-filetype plugin on
+filetype plugin indent on
 set number
 let g:go_disable_autoinstall = 0
+let $PATH = "/Users/xiaods/go:".$PATH
+let $GOPATH = "/Users/xiaods/go"
+
+Plugin 'Valloric/YouCompleteMe'
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+
+" Highlight
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [

@@ -2,8 +2,6 @@
 " Author: Tommy Xiao
 " Source: https://github.com/xiaods/vimfiles
 
-set nocompatible
-
 " ----------
 " Leader key
 " ----------
@@ -19,52 +17,20 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-Plugin 'rking/ag.vim'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-surround'
 Plugin 'Townk/vim-autoclose'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'bling/vim-airline'
-Plugin 'szw/vim-ctrlspace'
-
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-fireplace'
-
+Plugin 'vim-ctrlspace/vim-ctrlspace'
 Plugin 'ervandew/supertab'
-
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-fugitive'
-Plugin 'rking/vim-ruby-refactoring'
-Plugin 'tpope/vim-dispatch'
-Plugin 'airblade/vim-gitgutter'
-
-Plugin 'nono/vim-handlebars'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
-
-Plugin 'slim-template/vim-slim'
-Plugin 'vim-scripts/ctags.vim'
-Plugin 'mrxd/bufkill.vim'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'scrooloose/syntastic'
-
-Plugin 'codegram/vim-haml2slim'
 Plugin 'majutsushi/tagbar'
-
-Plugin 'rizzatti/funcoo.vim'
-Plugin 'rizzatti/dash.vim'
-
-Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
-
 Plugin 'wting/rust.vim'
 Plugin 'lyuts/vim-rtags'
+Plugin 'vim-scripts/ctags.vim'
 
 call vundle#end()  " required
 filetype plugin indent on    " required
@@ -76,7 +42,7 @@ colorscheme smyck
 " ------------
 " VIM SETTINGS
 " ------------
-
+set nocompatible
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -154,6 +120,8 @@ autocmd BufRead *.md  set ai formatoptions=tcroqn2 comments=n:&gt;
 autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 autocmd BufWritePre * :%s/\s\+$//e " strip trailing whitespace
 
+syntax on
+
 " --------
 " MAPPINGS
 " --------
@@ -217,62 +185,6 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-"--------------
-" RUNNING TESTS
-"--------------
-function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    :silent !echo;echo;echo;echo;echo;echo;echo;echo;echo;echo
-    if match(a:filename, '\.feature') != -1
-      exec ":!bundle exec spinach " . a:filename
-    else
-      if filereadable("script/test")
-        exec ":!script/test " . a:filename
-      elseif match(a:filename, '_test\.rb') != -1
-        exec ":!ruby -I'lib:test' " . a:filename
-      elseif match(a:filename, '_spec\.rb') != -1
-        exec ":!rspec --color --drb " . a:filename
-      end
-    end
-endfunction
-
-function! SetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
-endfunction
-
-function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
-
-    " Run the tests for the previously-marked file.
-    let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-    if in_test_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
-endfunction
-
-function! RunNearestTest()
-    let spec_line_number = line('.')
-
-    call RunTestFile(":" . spec_line_number)
-endfunction
-
-map <leader>t :call RunTestFile()<CR>
-map <leader>T :call RunNearestTest()<CR>
-
 " ----------------
 " PLUG-IN SETTINGS
 " ----------------
@@ -287,10 +199,6 @@ nmap <leader>a :Ag
 map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
-" Fugitive (Git)
-nmap <leader>gs :Gstatus<CR>
-nmap <leader>gc :Gcommit<CR>
-
 " TComment
 map <Leader>co :TComment<CR>
 
@@ -301,7 +209,6 @@ let g:AutoCloseProtectedRegions = ["Character"]
 " Ctags
 " You can use Ctrl-] to jump to a function.... Ctrl-p will jump back
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" map <C-p> :pop<CR>
 
 " You can cycle through multiple function definitions using
 " these mappings. This maps to my windows key + left/right arrows
@@ -309,13 +216,14 @@ map <F7> :tnext<CR>
 map <F9> :tprev<CR>
 
 " CtrlSpace
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.min.js,*.min.css
-let g:ctrlspace_default_mapping_key = '<leader>o'
-
-" Ctrl-p
-" set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-" let g:ctrlp_map = '<leader>o'
-" let g:ctrlp_custom_ignore = '\\v[\\/](doc|tmp|log|coverage)$'
+if executable("ag")
+    let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
+endif
+let g:CtrlSpaceSearchTiming = 500
+nnoremap <silent><C-p> :CtrlSpace O<CR>
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 "  NERDtree
 nmap <silent> <leader>p :NERDTreeToggle<cr>%
@@ -329,9 +237,6 @@ let g:syntastic_echo_current_error=0
 let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=0
 
-" Haml2Slim
-nnoremap <leader>h2s :call Haml2Slim(bufname("%"))<CR>
-
 " --------------------
 " CUSTOM CONFIGURATION
 " --------------------
@@ -340,57 +245,13 @@ if filereadable(my_home . '.vimrc.local')
   source ~/.vimrc.local
 endif
 
+let javascript_enable_domhtmlcss = 1
+
 if &term =~ '256color'
   " Disable Background Color Erase (BCE) so that color schemes
   " work properly when Vim is used inside tmux and GNU screen.
   " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
 endif
-let g:clojure_align_multiline_strings = 1
-
-nmap gh <Plug>GitGutterNextHunk
-nmap gH <Plug>GitGutterPrevHunk
-
-nmap gh <Plug>GitGutterNextHunk
-nmap gH <Plug>GitGutterPrevHunk
-
-syntax on
-filetype indent plugin on
-
-" Vim Gist
-let g:gist_clip_command = 'pbcopy'
-" let g:gist_clip_command = 'xclip -selection clipboard'
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-let g:gist_post_private = 1
-
-" Vim dispatch
-autocmd FileType ruby
-      \ if expand('%') =~# '_test\.rb$' |
-      \   compiler rubyunit | setl makeprg=testrb\ \"%:p\" |
-      \ elseif expand('%') =~# '_spec\.rb$' |
-      \   compiler rspec | setl makeprg=bundle\ exec\ rspec\ \"%:p\" |
-      \ else |
-      \   compiler ruby | setl makeprg=ruby\ -wc\ \"%:p\" |
-      \ endif
-
-" Rspec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>r :call RunAllSpecs()<CR>
-
-if executable("spring")
-  let g:rspec_command = "!bundle exec spring rspec {spec}"
-endif
-
-if executable("zeus")
-  let g:rspec_command = "compiler rspec | set makeprg=zeus | Make rspec {spec}"
-endif
 
 nnoremap <silent> <Leader>b :TagbarToggle<CR>
-
-" Ctrlp.vim
-let g:ctrlp_map = '<leader>o'
-let g:ctrlp_working_path_mode = 'ra'
-map <leader>c :CtrlPTag<cr>
