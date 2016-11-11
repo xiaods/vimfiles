@@ -194,10 +194,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 
 " Ag (Regex-based search)
-nmap <leader>a :Ag
+" nmap <leader>a :Ack
 " Rotating among results
-map <C-n> :cn<CR>
-map <C-p> :cp<CR>
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
 
 " TComment
 map <Leader>co :TComment<CR>
