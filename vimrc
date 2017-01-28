@@ -18,26 +18,24 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'Townk/vim-autoclose'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-ctrlspace/vim-ctrlspace'
 Plugin 'ervandew/supertab'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-markdown'
-Plugin 'wting/rust.vim'
 Plugin 'lyuts/vim-rtags'
 Plugin 'vim-scripts/ctags.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'vim-syntastic/syntastic'
 
 call vundle#end()  " required
 filetype plugin indent on    " required
 
 " Default color theme
 colorscheme smyck
-
 
 " ------------
 " VIM SETTINGS
@@ -193,12 +191,6 @@ map <leader>n :call RenameFile()<cr>
 let g:airline_powerline_fonts = 1
 let g:airline_exclude_preview = 1
 
-" Ag (Regex-based search)
-" nmap <leader>a :Ack
-" Rotating among results
-" map <C-n> :cn<CR>
-" map <C-p> :cp<CR>
-
 " TComment
 map <Leader>co :TComment<CR>
 
@@ -232,11 +224,14 @@ nmap <silent> <leader>p :NERDTreeToggle<cr>%
 nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
 
 " Syntastic
-let g:syntastic_check_on_open=0
-let g:syntastic_echo_current_error=0
-let g:syntastic_auto_jump=0
-let g:syntastic_auto_loc_list=0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 " --------------------
 " CUSTOM CONFIGURATION
 " --------------------

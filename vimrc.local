@@ -10,6 +10,16 @@ let g:indentLine_color_term = 239
 " easy paste in console
 map <leader>y "*p
 
+"rust devel
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
+Plugin 'timonv/vim-cargo'
+
+let g:rustfmt_autosave = 1
+
+set hidden
+let g:racer_cmd = "/Users/xiaods/.cargo/bin"
+
 " go devel
 Plugin 'fatih/vim-go'
 syntax enable
