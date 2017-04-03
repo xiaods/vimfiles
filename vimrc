@@ -31,6 +31,15 @@ Plugin 'vim-scripts/ctags.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
 
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'Yggdroot/indentLine'
+
+Plugin 'rust-lang/rust.vim'
+Plugin 'racer-rust/vim-racer'
+Plugin 'timonv/vim-cargo'
+
+Plugin 'fatih/vim-go'
+
 call vundle#end()  " required
 filetype plugin indent on    " required
 
@@ -194,10 +203,6 @@ let g:airline_exclude_preview = 1
 " TComment
 map <Leader>co :TComment<CR>
 
-" AutoClose
-let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}'}
-let g:AutoCloseProtectedRegions = ["Character"]
-
 " Ctags
 " You can use Ctrl-] to jump to a function.... Ctrl-p will jump back
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
@@ -219,6 +224,7 @@ let g:CtrlSpaceSaveWorkspaceOnExit = 1
 
 "  NERDtree
 nmap <silent> <leader>p :NERDTreeToggle<cr>%
+
 " Surround
 " ,' switches ' and "
 nnoremap <leader>' ""yls<c-r>={'"': "'", "'": '"'}[@"]<cr><esc>
@@ -228,18 +234,53 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" 必要配置2--错误标注（和SyntasticStatuslineFlag()配合）
+let g:syntastic_error_symbol = 'EE'
+let g:syntastic_style_error_symbol = 'E>'
+let g:syntastic_warning_symbol = 'WW'
+let g:syntastic_style_warning_symbol = 'W>'
+
+" 不需要手动调用 SyntasticSetTocList. 默认1
 let g:syntastic_always_populate_loc_list = 1
+" 自动拉起关闭错误窗口.
+" 0不自动. 1自动拉起关闭. 2 自动关闭. 3 自动拉起 默认2, 建议为1
 let g:syntastic_auto_loc_list = 1
+" 打开文件时做语法检查, 默认 0
 let g:syntastic_check_on_open = 1
+" 报错时做语法检查, 默认 1
 let g:syntastic_check_on_wq = 0
+
+" 对输出做排序, 默认1
+let g:syntastic_sort_aggregated_errors=1
+
+" 输出错误来源. 默认1
+let g:syntastic_id_checkers=1
+" 在命令行显示当前行的错误信息. 默认1
+let g:syntastic_echo_current_error=1
+" 行号左边显示错误标记. 默认1
+let g:syntastic_enable_sign=1
+" 鼠标悬停时显示当前行错误信息. 默认1, 改为0
+let g:syntastic_enable_balloons=0
+" 开启错误信息语法高亮, 默认1
+let g:syntastic_enable_highlighting=1
+
+let g:syntastic_cpp_check_header = 1
+let b:syntastic_cpp_cflags = '-I/Users/xiaods/Documents/Code/mesos-projects/mesos/include -I/Users/xiaods/Documents/Code/mesos-projects/mesos/3rdparty/stout/include -I/Users/xiaods/Documents/Code/mesos-projects/mesos/3rdparty/libprocess/include'
+let g:syntastic_cpp_include_dirs = []
+" 编译器选项
+let g:syntastic_cpp_compiler_options = '-std=c++11'
+" Enable header files being re-checked on every file write.
+let g:syntastic_cpp_auto_refresh_includes = 1
+" let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_errorformat = "%f:%l%c: %trror: %m"
+let g:syntastic_cpp_compiler = "g++"
+
+
 " --------------------
 " CUSTOM CONFIGURATION
 " --------------------
-let my_home = expand("$HOME/")
-if filereadable(my_home . '.vimrc.local')
-  source ~/.vimrc.local
-endif
 
+" javascript
 let javascript_enable_domhtmlcss = 1
 
 if &term =~ '256color'
@@ -249,4 +290,74 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-nnoremap <silent> <Leader>b :TagbarToggle<CR>
+" remove leave msg on title
+let &titleold=getcwd()
+let g:indentLine_char = '¦'
+let g:indentLine_color_term = 239
+
+" easy paste in console
+map <leader>y "*p
+
+" Rust devel
+let g:rustfmt_autosave = 1
+let g:racer_cmd = "~/.cargo/bin"
+
+"------------------------------------------------------------------------------
+"  Vim-go
+"------------------------------------------------------------------------------
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "gofmt" "Explicited the formater plugin (gofmt, goimports, goreturn...)
+
+" Show a list of interfaces which is implemented by the type under your cursor
+au FileType go nmap <Leader>s <Plug>(go-implements)
+
+" Show type info for the word under your cursor
+au FileType go nmap <Leader>i <Plug>(go-info)
+
+" Open the relevant Godoc for the word under the cursor
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+
+" Open the Godoc in browser
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+
+" Run/build/test/coverage
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+" By default syntax-highlighting for Functions, Methods and Structs is disabled.
+" Let's enable them!
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+
+nmap <F8> :TagbarToggle<CR>
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
