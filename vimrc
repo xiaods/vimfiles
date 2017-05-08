@@ -204,7 +204,7 @@ let g:airline_exclude_preview = 1
 map <Leader>co :TComment<CR>
 
 " Ctags
-" You can use Ctrl-] to jump to a function.... Ctrl-p will jump back
+" You can use Ctrl-] to jump to a function.... Ctrl-t will jump back
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " You can cycle through multiple function definitions using
@@ -361,3 +361,7 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
 \ }
+
+" golint
+set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
