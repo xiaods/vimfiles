@@ -207,11 +207,6 @@ map <Leader>co :TComment<CR>
 " You can use Ctrl-] to jump to a function.... Ctrl-t will jump back
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" You can cycle through multiple function definitions using
-" these mappings. This maps to my windows key + left/right arrows
-map <F7> :tnext<CR>
-map <F9> :tprev<CR>
-
 " CtrlSpace
 if executable("ag")
     let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
@@ -263,18 +258,6 @@ let g:syntastic_enable_sign=1
 let g:syntastic_enable_balloons=0
 " 开启错误信息语法高亮, 默认1
 let g:syntastic_enable_highlighting=1
-
-let g:syntastic_cpp_check_header = 1
-let b:syntastic_cpp_cflags = '-I/Users/xiaods/Documents/Code/mesos-projects/mesos/include -I/Users/xiaods/Documents/Code/mesos-projects/mesos/3rdparty/stout/include -I/Users/xiaods/Documents/Code/mesos-projects/mesos/3rdparty/libprocess/include'
-let g:syntastic_cpp_include_dirs = []
-" 编译器选项
-let g:syntastic_cpp_compiler_options = '-std=c++11'
-" Enable header files being re-checked on every file write.
-let g:syntastic_cpp_auto_refresh_includes = 1
-" let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_cpp_errorformat = "%f:%l%c: %trror: %m"
-let g:syntastic_cpp_compiler = "g++"
-
 
 " --------------------
 " CUSTOM CONFIGURATION
