@@ -1,9 +1,9 @@
 # vimfiles
 
-Personal faved vim settings for gopher, rust coder
-OS X El Capitan Tested.
+Personal faved vim settings for gophers,crustaceans by My Tastes.
+Current testing Environment: macOS sierra
 
-Update: 2017-1-31
+Update: 2017-12-31
 
 ## Installing
 
@@ -34,13 +34,8 @@ TA-DA! Everything's done!
 
 ## Plug-ins
 
-christoomey/vim-tmux-navigator
-Yggdroot/indentLine
-
-fatih/vim-go
-rust-lang/rust.vim
-
-
-
-*You must install tmux before, (vimux,vroom) vim-plugins need it.
-
+* christoomey/vim-tmux-navigator
+    You must install tmux before, (vimux,vroom) vim-plugins need it.
+* Yggdroot/indentLine
+* fatih/vim-go
+* rust-lang/rust.vim
