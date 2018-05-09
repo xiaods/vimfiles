@@ -22,7 +22,6 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'bling/vim-airline'
 Plugin 'vim-ctrlspace/vim-ctrlspace'
 Plugin 'ervandew/supertab'
-Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-markdown'
@@ -39,6 +38,9 @@ Plugin 'racer-rust/vim-racer'
 Plugin 'timonv/vim-cargo'
 
 Plugin 'fatih/vim-go'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 call vundle#end()  " required
 filetype plugin indent on    " required
@@ -195,6 +197,9 @@ map <leader>n :call RenameFile()<cr>
 " ----------------
 " PLUG-IN SETTINGS
 " ----------------
+
+" React JSX syntax highlighting and indenting
+let g:jsx_ext_required = 1
 
 " vim-airline
 let g:airline_powerline_fonts = 1
