@@ -144,8 +144,11 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-nnoremap j gj
+" jump way
 nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
 
 imap jk <ESC>
 nnoremap ; :
