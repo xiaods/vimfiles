@@ -29,15 +29,11 @@ Plugin 'lyuts/vim-rtags'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'vim-syntastic/syntastic'
-
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Yggdroot/indentLine'
-
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
-
 Plugin 'fatih/vim-go'
-
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
@@ -265,6 +261,8 @@ let g:syntastic_enable_sign=1
 let g:syntastic_enable_balloons=0
 " 开启错误信息语法高亮, 默认1
 let g:syntastic_enable_highlighting=1
+" checking rust
+let g:syntastic_rust_checkers = ['cargo']
 
 " --------------------
 " CUSTOM CONFIGURATION
@@ -289,12 +287,14 @@ let g:indentLine_color_term = 239
 map <leader>y "*p
 
 " Rust devel
+autocmd BufNewFile,BufRead *.rs set filetype=rust
 let g:rustfmt_autosave = 1
-let g:racer_cmd = "~/.cargo/bin"
 au FileType rust nmap <silent> <C-]> <Plug>(rust-def)
 au FileType rust nmap <silent> <C-w><C-]> <Plug>(rust-def-vertical)
 au FileType rust nmap <silent> <C-w>} <Plug>(rust-def-split)
 au FileType rust nmap <silent> <C-k> <Plug>(rust-doc)
+let g:racer_cmd = "$HOME/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 
 "------------------------------------------------------------------------------
 "  Vim-go
