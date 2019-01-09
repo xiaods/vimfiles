@@ -34,6 +34,7 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'fatih/vim-go'
+Plugin 'buoto/gotests-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 
