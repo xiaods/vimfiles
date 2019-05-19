@@ -262,8 +262,6 @@ let g:syntastic_enable_sign=1
 let g:syntastic_enable_balloons=0
 " 开启错误信息语法高亮, 默认1
 let g:syntastic_enable_highlighting=1
-" checking rust
-let g:syntastic_rust_checkers = ['cargo']
 
 " --------------------
 " CUSTOM CONFIGURATION
